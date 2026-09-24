@@ -5,66 +5,50 @@ APK oficial nativa de FacturaYA (https://facturaya-wbed.onrender.com),
 escrita en Flutter: punto de venta, turnos e inventario para tu negocio,
 con o sin internet.
 
-Version actual: 1.0.2 (versionCode 2003, Android de 64 bits).
+Version actual: 1.0.3 (compilacion 2004 en arm64).
 
 Descarga
 --------
 
-Archivo: FacturaYA-v1.0.2.apk
-Tamano: 19,8 MB
-SHA-256: 8a45a52d95e473a73c01df9418223a41196c0814f83f21c6ba93779f64da58d5
+La APK recomendada para la mayoria de los telefonos es la arm64-v8a.
+Las tres cubren las arquitecturas de Android que soporta Flutter (el
+x86 de 32 bits fue retirado del SDK).
+
+| Archivo | Arquitectura | Tamaño | versionCode | SHA-256 |
+|---------|--------------|--------|-------------|---------|
+| FacturaYA-v1.0.3-arm64-v8a.apk | arm64-v8a (recomendada) | 19,1 MB | 2004 | 5c0589e97ea5fcf7b3bbd93c1b3a7473b89a4892b55192af57a41b872386cd02 |
+| FacturaYA-v1.0.3-armeabi-v7a.apk | armeabi-v7a | 16,9 MB | 1004 | c164019fa32a770be885113f29388228b16fdbba0b318c6f7e8e92881466fdd7 |
+| FacturaYA-v1.0.3-x86_64.apk | x86_64 | 20,6 MB | 4004 | 02a15f4919fff9859572ea05ea2161c97a447a1793bf69273be00a625931fa3c |
+
 Descarga directa tambien desde la web oficial, en la seccion "App
 nativa para Android" del landing (es una de las primeras secciones de
-la pagina), y adjunta al release v1.0.2 de este mismo repositorio.
+la pagina), y adjuntas al release v1.0.3 de este mismo repositorio.
+
+Si ya tenias la 1.0.2 instalada, la arm64 se actualiza sola encima
+(versionCode 2004 > 2003) sin desinstalar nada.
 
 Requisitos
 ----------
 
-- Android 6.0 o superior, telefono de 64 bits (2016 en adelante).
-- Plan Pro de FacturaYA. La app nativa es exclusiva del plan Pro; la
-  version web gratuita sigue disponible en el navegador con la misma
-  cuenta.
+Android 6.0 o superior. La app exige el Plan Pro de FacturaYA (el plan
+gratuito sigue usando la web con la misma cuenta).
 
-Instalacion
------------
+Que trae la 1.0.3
+------------------
 
-1. Descarga el archivo FacturaYA-v1.0.2.apk.
-2. Abre la descarga desde la barra de notificaciones o la carpeta
-   Descargas.
-3. Si Android lo pide, activa "Permitir de esta fuente" o "Instalar
-   apps desconocidas" para tu navegador o gestor de archivos y
-   confirma la instalacion.
-4. Entra con tu cuenta (correo Gmail) o como cajero con tu codigo de 4
-   digitos.
+- Entrada del cajero con SESION REAL emitida por el servidor (nunca
+  la sesion del dueno de la cuenta).
+- La cola offline ya no pierde las ventas rechazadas: se quedan con su
+  error hasta corregirlas.
+- Impresion de tickets por Bluetooth (ESC/POS 58/80 mm) como la web.
+- Exportacion del IPV a Excel (dia, mes y turno), calendario de
+  ingresos y revocacion de ventas.
+- Recetas de ingredientes que descuentan stock al vender.
+- Tema claro/oscuro manual y Ajustes sin la seccion Servidor.
 
-Novedades de la 1.0.2
----------------------
+Firma
+-----
 
-- Teclado del codigo de cajero corregido: en la 1.0.1 las teclas no
-  llegaban a pintarse dentro de la pantalla de entrada (falla de
-  maquetado con el scroll) y parecia que no habia teclado ni input.
-  Ahora el pad numerico se dibuja siempre, dentro de un scroll o en
-  pantalla fija.
-- Equipo con cuentas de Gmail: agrega a tus trabajadores con su
-  correo, contrasena inicial, rol (Cajero o Administrador) y sucursal;
-  cada uno vende a su nombre, igual que en la web.
-- Sucursales multiples (Plan Pro): crear, renombrar y activar o
-  desactivar sucursales; el administrador elige en cual vende en el
-  punto de venta, las ventas quedan selladas con su sucursal (tambien
-  las cobradas sin internet) y el historial de ventas se filtra por
-  sucursal.
-- Enlace "No tienes cuenta? Registrate aca" en la pantalla de entrada,
-  que abre el registro de la web en el navegador del telefono.
-- La lista de cajeros distingue cargando, sin conexion y sin cajeros,
-  con boton de reintentar.
-
-La 1.0.1 corrigio el Panel (campos reales del servidor), convirtio el
-chat de soporte en interruptor de un solo estado, añadio el icono y
-splash oficiales, la entrada de cajero con teclado propio y la exigencia
-del Plan Pro. La 1.0.0 fue la primera version publica.
-
-Codigo fuente
--------------
-
-Este repositorio publico distribuye solo la APK firmada. El codigo
-fuente completo vive en el repositorio privado de FacturaYA.
+Todas las APKs estan firmadas con la clave de release de FacturaYA
+(CN=FacturaYA, O=beto2-dev). El keystore NO vive en ningun
+repositorio: se inyecta como secreto al compilar.
