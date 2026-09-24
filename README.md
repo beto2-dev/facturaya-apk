@@ -5,17 +5,17 @@ APK oficial nativa de FacturaYA (https://facturaya-wbed.onrender.com),
 escrita en Flutter: punto de venta, turnos e inventario para tu negocio,
 con o sin internet.
 
-Version actual: 1.0.1 (versionCode 2002, Android de 64 bits).
+Version actual: 1.0.2 (versionCode 2003, Android de 64 bits).
 
 Descarga
 --------
 
-Archivo: FacturaYA-v1.0.1.apk
-Tamano: 19,7 MB
-SHA-256: 9ecd1ad6a0ee2fd43c36f28d4acfca511f4e59bcedd5637237d2b8d573d72349
+Archivo: FacturaYA-v1.0.2.apk
+Tamano: 19,8 MB
+SHA-256: 8a45a52d95e473a73c01df9418223a41196c0814f83f21c6ba93779f64da58d5
 Descarga directa tambien desde la web oficial, en la seccion "App
-nativa para Android" del landing, y adjunta al release v1.0.1 de este
-mismo repositorio.
+nativa para Android" del landing (es una de las primeras secciones de
+la pagina), y adjunta al release v1.0.2 de este mismo repositorio.
 
 Requisitos
 ----------
@@ -28,7 +28,7 @@ Requisitos
 Instalacion
 -----------
 
-1. Descarga el archivo FacturaYA-v1.0.1.apk.
+1. Descarga el archivo FacturaYA-v1.0.2.apk.
 2. Abre la descarga desde la barra de notificaciones o la carpeta
    Descargas.
 3. Si Android lo pide, activa "Permitir de esta fuente" o "Instalar
@@ -37,38 +37,31 @@ Instalacion
 4. Entra con tu cuenta (correo Gmail) o como cajero con tu codigo de 4
    digitos.
 
-Novedades de la 1.0.1
+Novedades de la 1.0.2
 ---------------------
 
-- Chat de soporte convertido en interruptor de un solo estado: el mismo
-  boton abre y cierra, con boton visible para cerrar y el boton Atras
-  de Android tambien lo cierra.
-- Panel corregido: ventas y netos de hoy y del mes, conteo de productos
-  y equipo leyendo los campos reales del servidor, con calculo offline
-  (cache + cola de ventas pendientes) y refresco automatico tras cada
-  venta, sincronizacion o cambio de inventario. Avisos con singular y
-  plural correctos y badge de sincronizacion al dia.
-- Icono y splash oficiales de la web (recibo sobre zinc-950), con icono
-  adaptativo foreground, background y monocromo para Android 13+.
-- Entrada "Entrar como cajero" con teclado numerico propio, indicadores
-  animados, vibracion haptica, sacudida en el error y bloqueo temporal
-  tras varios intentos. Funciona sin internet con el hash del PIN
-  guardado cifrado tras el primer inicio de sesion del dueno.
-- La app nativa exige Plan Pro, con validacion al entrar y cada 6 horas
-  y 72 horas de gracia sin conexion; pantalla de bloqueo con campo de
-  clave de licencia y acceso a soporte.
-- Contador de dinero rehecho: sin filas tapadas por la barra inferior,
-  campo de cantidad fijo con teclado numerico, subtotales en una linea
-  y textos con singular y plural correctos.
-- Punto de venta rehecho: tarjetas con nombre a 2 lineas, precio en una
-  linea y stock dentro; chips de categoria sin cortes y aviso de
-  productos que viven en el almacen.
-- Animaciones sutiles que respetan la opcion de reducir animaciones del
-  sistema, y ortografia revisada con tildes en toda la interfaz.
+- Teclado del codigo de cajero corregido: en la 1.0.1 las teclas no
+  llegaban a pintarse dentro de la pantalla de entrada (falla de
+  maquetado con el scroll) y parecia que no habia teclado ni input.
+  Ahora el pad numerico se dibuja siempre, dentro de un scroll o en
+  pantalla fija.
+- Equipo con cuentas de Gmail: agrega a tus trabajadores con su
+  correo, contrasena inicial, rol (Cajero o Administrador) y sucursal;
+  cada uno vende a su nombre, igual que en la web.
+- Sucursales multiples (Plan Pro): crear, renombrar y activar o
+  desactivar sucursales; el administrador elige en cual vende en el
+  punto de venta, las ventas quedan selladas con su sucursal (tambien
+  las cobradas sin internet) y el historial de ventas se filtra por
+  sucursal.
+- Enlace "No tienes cuenta? Registrate aca" en la pantalla de entrada,
+  que abre el registro de la web en el navegador del telefono.
+- La lista de cajeros distingue cargando, sin conexion y sin cajeros,
+  con boton de reintentar.
 
-La 1.0.0 fue la primera version publica (punto de venta completo,
-turnos, almacen, contador de dinero, venta offline del plan Pro y
-sonido de transaccion finalizada).
+La 1.0.1 corrigio el Panel (campos reales del servidor), convirtio el
+chat de soporte en interruptor de un solo estado, añadio el icono y
+splash oficiales, la entrada de cajero con teclado propio y la exigencia
+del Plan Pro. La 1.0.0 fue la primera version publica.
 
 Codigo fuente
 -------------
