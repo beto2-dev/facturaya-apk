@@ -5,7 +5,7 @@ APK oficial nativa de FacturaYA (https://facturaya-wbed.onrender.com),
 escrita en Flutter: punto de venta, turnos e inventario para tu negocio,
 con o sin internet.
 
-Version actual: 1.0.3.2 (compilacion 2006 en arm64).
+Version actual: 1.0.3.3 (compilacion 2007 en arm64).
 
 Descarga
 --------
@@ -16,16 +16,17 @@ x86 de 32 bits fue retirado del SDK).
 
 | Archivo | Arquitectura | Tamaño | versionCode | SHA-256 |
 |---------|--------------|--------|-------------|---------|
-| FacturaYA-v1.0.3.2-arm64-v8a.apk | arm64-v8a (recomendada) | 20,1 MB | 2006 | fb5118c77d611c2ccffe946cd6a1b69a318cef756894bef86dba325ffbb7606c |
-| FacturaYA-v1.0.3.2-armeabi-v7a.apk | armeabi-v7a | 17,7 MB | 1006 | a7e811fa4aba25aeaced543a4f36bc8fbace5f05915f30efb64be655022e1931 |
-| FacturaYA-v1.0.3.2-x86_64.apk | x86_64 | 21,6 MB | 4006 | 90fabd9c2cbe221b7255f08618b0c3c4dd4d98750ab5aeb5272dea3b7e1ac46c |
+| FacturaYA-v1.0.3.3-arm64-v8a.apk | arm64-v8a (recomendada) | 20,1 MB | 2007 | fa4bbe806bd0e53ec3c79c89a2942c88262013a9de1f100fff55279c0632db1b |
+| FacturaYA-v1.0.3.3-armeabi-v7a.apk | armeabi-v7a | 17,7 MB | 1007 | 1e9e2a19e4b0e53fc33cd8132c6db130ff62f18f3299204e4b835932bba161d7 |
+| FacturaYA-v1.0.3.3-x86_64.apk | x86_64 | 21,6 MB | 4007 | 94b5cdcca67043545038372959b73ca4653ee08e03b199a97fb66d73c681b3d7 |
 
 Descarga directa tambien desde la web oficial, en la seccion "App
 nativa para Android" del landing (es una de las primeras secciones de
-la pagina), y adjuntas al release v1.0.3.2 de este mismo repositorio.
+la pagina), y adjuntas al release v1.0.3.3 de este mismo repositorio.
 
-Si ya tenias la 1.0.3 o la 1.0.3.1 instaladas, la arm64 se actualiza
-sola encima (versionCode 2006 > 2005) sin desinstalar nada.
+Si ya tenias la 1.0.3.2 (o cualquier version anterior) instalada, la
+arm64 se actualiza sola encima (versionCode 2007 > 2006) sin
+desinstalar nada.
 
 Requisitos
 ----------
@@ -33,28 +34,39 @@ Requisitos
 Android 6.0 o superior. La app exige el Plan Pro de FacturaYA (el plan
 gratuito sigue usando la web con la misma cuenta).
 
-Que trae la 1.0.3.2
+Que trae la 1.0.3.3
 -------------------
 
-- Abrir turno como cajero ya no falla con "Solo los cajeros y
-  trabajadores abren turnos": la sesion del cajero por codigo viaja
-  sobre la cuenta del dueno (es quien sostiene la integridad de las
-  ventas) y el servidor la confundia con la del administrador. Ahora
-  el turno se abre y se sincroniza sellado con el perfil del cajero
-  (quien, cuando y en que sucursal).
-- Los textos no se salen de sus contenedores: los importes grandes del
-  calendario de ingresos (mes, ano e historico) y las celdas de los
-  dias se encogen si no caben, los filtros de sucursal fluyen en
-  varias lineas y las filas de totales de Ventas y Turnos aguantan la
-  letra grande del telefono.
-- La version de Ajustes ya no se queda atras: dice 1.0.3.2.
-- La cantidad del carrito se escribe a mano en el punto de venta: se
-  toca el numero entre los botones de sumar y restar y se teclea la
-  cantidad exacta (1 a 10.000, el mismo limite del servidor).
-- Todo lo de la 1.0.3.1 y la 1.0.3 sigue igual: calendario con filtro
-  por sucursal, sesion real de cajero, cola offline sin perder ventas,
-  impresion Bluetooth ESC/POS, exportacion del IPV, revocacion y
-  recetas que descuentan stock.
+- Cerrar turno como cajero ya no se rechaza: el servidor encuentra el
+  turno ABIERTO sellado con el perfil del cajero autenticado por
+  codigo (y por el turno del dispositivo, con cierre idempotente:
+  reintentar tras perder la respuesta devuelve el turno ya cerrado).
+  El cajero tambien VE su turno abierto en la lista de turnos.
+- El stock no se sobrevende: imposible cobrar mas unidades de las
+  disponibles (si hay 45, no se puede vender 76). El carrito ajusta la
+  cantidad al maximo disponible y lo avisa al agregar, al escribir la
+  cantidad, al recargar la pantalla y antes de cobrar; el servidor
+  valida lo mismo al cobrar y al sincronizar la cola offline (con el
+  motivo del rechazo visible en el Panel).
+- Protecciones anti-abuso y anti-fraude: el codigo PIN del cajero
+  bloquea el perfil 15 minutos tras 3 intentos fallidos, las ventas
+  duplicadas en pocos segundos se rechazan (con exencion de los
+  reintentos reales) y el vendedor reincidente queda suspendido unos
+  minutos, los carritos con precios manipulados desde el cliente se
+  rechazan al momento (los precios SIEMPRE salen del servidor) y los
+  limites de peticiones son mas estrictos en login, cobros,
+  sincronizacion y turnos.
+- Verificacion de firma de la APK: al arrancar, la app compara el
+  certificado de la copia instalada contra el ORIGINAL de FacturaYA
+  (huella SHA-256), comprueba el nombre del paquete, que sea un build
+  de produccion y la integridad del propio APK por su hash. Una copia
+  reempaquetada o alterada muestra el aviso de seguridad, cierra la
+  sesion y borra los datos del telefono.
+- Todo lo de la 1.0.3.2 y anteriores sigue igual: el turno abre,
+  textos sin desbordes, cantidad a mano en el carrito, calendario con
+  filtro por sucursal, sesion real de cajero, cola offline sin perder
+  ventas, impresion Bluetooth ESC/POS, exportacion del IPV, revocacion
+  y recetas que descuentan stock.
 
 Firma
 -----
